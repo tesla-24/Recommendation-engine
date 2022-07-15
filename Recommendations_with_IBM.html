@@ -14233,7 +14233,7 @@ Your top_20 looks like the solution list! Nice job.
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[22]:</div>
+<div class="prompt input_prompt">In&nbsp;[51]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">find_similar_users</span><span class="p">(</span><span class="n">user_id</span><span class="p">,</span> <span class="n">user_item</span><span class="o">=</span><span class="n">user_item</span><span class="p">):</span>
@@ -14253,7 +14253,7 @@ Your top_20 looks like the solution list! Nice job.
 <span class="sd">    </span>
 <span class="sd">    &#39;&#39;&#39;</span>
     <span class="c1"># compute similarity of each user to the provided user</span>
-    <span class="n">current_user_vector</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">user_item</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">user_id</span><span class="p">])</span>
+    <span class="n">current_user_vector</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">user_item</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">user_id</span><span class="p">])</span>
     <span class="n">dot_df</span> <span class="o">=</span> <span class="n">user_item</span> <span class="o">*</span> <span class="n">current_user_vector</span>
     <span class="n">similarity_df</span> <span class="o">=</span> <span class="n">dot_df</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">to_frame</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;similarity&#39;</span><span class="p">)</span>
     <span class="c1"># sort by similarity</span>
@@ -14274,7 +14274,7 @@ Your top_20 looks like the solution list! Nice job.
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[23]:</div>
+<div class="prompt input_prompt">In&nbsp;[52]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Do a spot check of your function</span>
@@ -14297,9 +14297,9 @@ Your top_20 looks like the solution list! Nice job.
 
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>The 10 most similar users to user 1 are: [2, 49, 3764, 98, 3697, 3782, 38, 21, 23, 5083]
-The 5 most similar users to user 3933 are: [3934, 122, 3264, 126, 3172]
-The 3 most similar users to user 46 are: [117, 2073, 131]
+<pre>The 10 most similar users to user 1 are: [3933, 23, 3782, 203, 4459, 3870, 131, 4201, 46, 5041]
+The 5 most similar users to user 3933 are: [1, 23, 3782, 203, 4459]
+The 3 most similar users to user 46 are: [4201, 3782, 23]
 </pre>
 </div>
 </div>
@@ -15066,7 +15066,7 @@ For a better recommendation for new users, we can ask the new user few questions
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>Provide your response here.</strong></p>
+<p>The data in the lesson had a column of user ratings. Therefore if any user has not rated a movie, it will be NaN. On such a data which has a lot of NaNs, SVD won't work well. In this problem, we won't have any NaN values as our user-item matrix records if a user has interacted with the article or not. Therefore the matrix in this problem will be composed of only 0s and 1s and no NaNs. Hence we can use SVD here.</p>
 
 </div>
 </div>
@@ -15382,7 +15382,7 @@ See the caveats in the documentation: http://pandas.pydata.org/pandas-docs/stabl
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[51]:</div>
+<div class="prompt input_prompt">In&nbsp;[43]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Use these cells to see how well you can use the training </span>
@@ -15408,7 +15408,7 @@ See the caveats in the documentation: http://pandas.pydata.org/pandas-docs/stabl
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[58]:</div>
+<div class="prompt input_prompt">In&nbsp;[44]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">num_latent_feats</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">700</span><span class="o">+</span><span class="mi">10</span><span class="p">,</span><span class="mi">20</span><span class="p">)</span>
@@ -15481,8 +15481,9 @@ See the caveats in the documentation: http://pandas.pydata.org/pandas-docs/stabl
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>As the number of latent features increases, the accuracy of train data is increasing. This is an obvious result, because as we increase the latent features, we are constructing the user-item matrix as close to the original as possible. When we reduce the latent features, it means we are trying to build an approximate version of user-item matrix by selecting the the most prominent features.
-The opposite is observed in the test set. As the number of latent features are increasing, the accuracy decreases. This is because as we increase the latent features, we add redundant features in the dataset (noise). These redundant features reduce the accuracy. By reducing the latent features, we are increasing the contribution of the important patterns or features that the modal has extracted. This leads to increase in velocity.</p>
+<p>As the number of latent features increases, the accuracy of train data is increasing. This is an obvious result, because as we increase the latent features, we are constructing the user-item matrix as close to the original as possible. When we reduce the latent features, it means we are trying to build an approximate version of user-item matrix by selecting the the most prominent features. <br>
+The opposite is observed in the test set. As the number of latent features are increasing, the accuracy decreases. This is because as we increase the latent features, we add redundant features in the dataset (noise). These redundant features reduce the accuracy. By reducing the latent features, we are increasing the contribution of the important patterns or features that the modal has extracted. This leads to increase in velocity. <br>
+To determine the performance of the above recommendation systems, we can conduct an A/B test. We can divide the users into two groups. One group will be recommended articles based on colloborative filtering while other SVD model.</p>
 
 </div>
 </div>
@@ -15505,11 +15506,102 @@ The opposite is observed in the test set. As the number of latent features are i
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt">In&nbsp;[45]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">subprocess</span> <span class="k">import</span> <span class="n">call</span>
 <span class="n">call</span><span class="p">([</span><span class="s1">&#39;python&#39;</span><span class="p">,</span> <span class="s1">&#39;-m&#39;</span><span class="p">,</span> <span class="s1">&#39;nbconvert&#39;</span><span class="p">,</span> <span class="s1">&#39;Recommendations_with_IBM.ipynb&#39;</span><span class="p">])</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[45]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>0</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[46]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>tar chvfz notebook.tar.gz *
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Recommendations_with_IBM-zh.ipynb
+Recommendations_with_IBM.html
+Recommendations_with_IBM.ipynb
+__pycache__/
+__pycache__/project_tests.cpython-36.pyc
+data/
+data/user-item-interactions.csv
+data/articles_community.csv
+notebook.tar.gz
+tar: notebook.tar.gz: file changed as we read it
+project_tests.py
+top_10.p
+top_20.p
+top_5.p
+user_item_matrix.p
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span> 
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span> 
 </pre></div>
 
     </div>
